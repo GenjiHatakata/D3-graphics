@@ -1,0 +1,304 @@
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+div#layout {
+    text-align: center;
+    position: relative;
+}
+
+#arcDiagram {
+    width: 1000px;
+    height: 600px;
+    overflow: scroll;
+    margin: auto;
+    background-color: #424242;
+    font-size: 12px;
+    position: relative;
+}
+
+#arcDiagram svg {
+    width: 100%;
+}
+
+#svg-defs-wrapper {
+    width: 0;
+    height: 0;
+}
+
+path {
+    stroke: gray;
+}
+
+line {
+    stroke: gray;
+}
+
+text {
+    fill: #dfdcca;
+    text-transform: uppercase;
+}
+
+
+/* date window slider */
+
+.graph-sliderwindow {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 25%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; */
+    color: #c7f7ff;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.graph-viewcontrols {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 25%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; */
+    color: #c7f7ff;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.graph-sliderwindow input {
+    width: 30%;
+    padding: 0;
+}
+
+.graph-sliderwindow section {
+    width: 100%;
+}
+
+.graph-sliderwindow label,
+.graph-sliderwindow section {
+    height: 2em;
+    line-height: 2em;
+    ;
+}
+
+.cfWindow {
+    fill: #ddddff11;
+    stroke-width: 0;
+}
+
+.smalltext {
+    font-size: 0.8em;
+}
+
+.spacedtext {
+    letter-spacing: 0.1em;
+}
+
+.radial-text {
+    font-size: 0.9em;
+}
+
+.date-text {
+    font-size: 0.8em;
+    font-weight: 400;
+    fill: #86a1eb;
+}
+
+path.text-arc {
+    stroke: transparent;
+    stroke-width: 0;
+    fill: none;
+}
+
+.outer-arc path {
+    stroke-width: 1px;
+    stroke-dasharray: 2;
+    fill: none;
+}
+
+.proj-desc:hover {
+    font-weight: 500;
+    fill: #86a1eb;
+}
+
+.radial-lines path {
+    fill: none;
+}
+
+.acq-line {
+    stroke: #b1aad8;
+    stroke-width: 9px;
+}
+
+.hidden {
+    display: none;
+}
+
+.addl-line {
+    stroke: palegreen;
+    stroke-width: 9px;
+}
+
+.pointer-path {
+    stroke: yellow;
+    stroke-width: 1px;
+}
+
+.proforma-desc-text {
+    fill: yellow;
+}
+
+.acq-cash-text {
+    fill: #b1aad8;
+}
+
+.addl-cash-text {
+    fill: palegreen;
+}
+
+path.date-line {
+    stroke: #86a1eb;
+    stroke-width: 1px;
+    stroke-dasharray: 2;
+    fill: none;
+}
+
+.acq-text {
+    fill: #b1aad8;
+}
+
+.addl-text {
+    fill: palegreen;
+}
+
+.rank-text {
+    fill: yellow;
+    cursor: pointer;
+}
+
+.rank-text:hover {
+    font-weight: 600;
+}
+
+.rank-text:hover {
+    font-weight: 600;
+}
+
+.grid .tick line {
+    stroke: #ebe186;
+    stroke-opacity: 0.3;
+}
+
+.area {
+    fill: #ebebda25;
+    stroke-width: 0;
+    ;
+}
+
+.title-text {
+    font-size: 1.8em;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.legend-text {
+    font-size: 0.8em;
+    font-weight: 300;
+    text-transform: uppercase;
+    fill: #f7dfc4;
+}
+
+.smalldot-marker {
+    stroke: #b1aad8;
+    stroke-width: 1px;
+    fill: #8b80cb;
+}
+
+.opendot-marker {
+    stroke: #ebe186;
+    stroke-width: 1px;
+    fill: none;
+}
+
+.filldot-marker {
+    stroke: #86a1eb;
+    stroke-width: 1px;
+    fill: #86a1eb;
+}
+
+.left-openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: transparent;
+}
+
+.left-openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: transparent;
+}
+
+.openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.filledbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: #ebe186;
+}
+
+.highlight-temp {
+    animation-name: highlight-bg;
+    animation-duration: 1s;
+}
+
+@keyframes highlight-bg {
+    0% {
+        background-color: currentColor;
+    }
+    100% {
+        background-color: #7ca7e911;
+    }
+}
+
+
+/* range input */
+
+input[type=range].slider-input {
+    padding: 0;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    margin-top: -2px
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 12px;
+    width: 16px;
+    border-radius: 20%;
+    background: goldenrod;
+    margin-top: -4px;
+    cursor: grabbing;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}

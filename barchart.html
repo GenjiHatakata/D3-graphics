@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bar chart with D3.js</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="./barchart.css" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- SVG definitions -->
+    <svg id="svg-defs-wrapper" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs id="svgdefs">
+            <marker id="opendot" viewBox="-10 -10 20 20" refX="0" refY="0" markerWidth="10" markerHeight="10">
+                <circle cx="0" cy="0" r="5" class="opendot-marker"></circle>
+            </marker>
+        </defs>
+    </svg>
+    <div id='layout'>
+        <!-- <h2>Bar chart example</h2> -->
+        <div id='emGraph'>
+            <!-- svg></svg -->
+        </div>
+    </div>
+
+    <!-- script src="./barchart.js"></script -->
+    <script src="./Utils.js"></script>
+    <script src="./plugin-barchart-new.js"></script>
+    <script src="./test-barchart.js"></script>
+
+</body>
+
+</html>

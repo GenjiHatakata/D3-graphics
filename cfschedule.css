@@ -1,0 +1,215 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+div#layout {
+    text-align: center;
+    position: relative;
+}
+
+#cfGraph {
+    width: 1000px;
+    height: 600px;
+    overflow: scroll;
+    margin: auto;
+    background-color: #2F4A6D;
+    font-size: 12px;
+    position: relative;
+}
+
+#cfGraph svg {
+    width: 100%;
+}
+
+#svg-defs-wrapper {
+    width: 0;
+    height: 0;
+}
+
+path {
+    stroke: gray;
+}
+
+line {
+    stroke: gray;
+}
+
+text {
+    fill: #dfdcca;
+}
+
+.hbar {
+    fill: #80cbc4;
+    stroke: #80cbc4;
+    stroke-width: 4px;
+}
+
+.hbar:hover {
+    stroke: #ebe186;
+}
+
+.hbar+text:hover {
+    fill: #ebe18e;
+    font-weight: 500;
+}
+
+.hbarLeftGroup text,
+.hbarRightGroup text {
+    fill: #2F4A6D;
+    font-size: 0.8em;
+}
+
+.hbarLeftGroup rect,
+.hbarRightGroup rect {
+    fill: #ebe186;
+}
+
+.legend {
+    stroke-width: 2px;
+}
+
+.hbar:hover {
+    stroke: #ebe186;
+}
+
+.hbar.updating {
+    fill: #ebe186;
+    stroke: #ebe186;
+}
+
+.hbar.exiting {
+    fill: #fcbc68;
+    stroke: #fcbc68;
+}
+
+.vline {
+    stroke: #b1aad8;
+    stroke-width: 1px;
+}
+
+.grid .tick line {
+    stroke: #ebe186;
+    stroke-opacity: 0.3;
+}
+
+.area {
+    fill: #ebebda25;
+    stroke-width: 0;
+    ;
+}
+
+.title-text {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+.legend-text {
+    font-size: 0.8em;
+    font-weight: 300;
+    text-transform: uppercase;
+    fill: #f7dfc4;
+}
+
+.smalldot-marker {
+    stroke: #b1aad8;
+    stroke-width: 1px;
+    fill: #8b80cb;
+}
+
+.opendot-marker {
+    stroke: #ebe186;
+    stroke-width: 1px;
+    fill: none;
+}
+
+.left-openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: transparent;
+}
+
+.left-openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: transparent;
+}
+
+.openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.filledbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: #ebe186;
+}
+
+.cfgraph-sliderwindow {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: greenyellow;
+    font-size: 0.9em;
+}
+
+.cfgraph-sliderwindow input {
+    width: 40%;
+}
+
+.cfgraph-sliderwindow section {
+    width: 100%;
+}
+
+.cfgraph-sliderwindow label,
+.cfgraph-sliderwindow section {
+    height: 2em;
+    line-height: 2em;
+    ;
+}
+
+.cfWindow {
+    fill: #ddddff11;
+    stroke-width: 0;
+}
+
+
+/* range input */
+
+input[type=range].slider-input {
+    padding: 0;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    margin-top: -2px
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 12px;
+    width: 16px;
+    border-radius: 20%;
+    background: goldenrod;
+    margin-top: -4px;
+    cursor: grabbing;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}

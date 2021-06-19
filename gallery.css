@@ -1,0 +1,418 @@
+/*  main gallery document structure */
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.graphs-content {
+    display: grid;
+    grid-template-columns: [v1] 1fr [v2];
+    grid-template-rows: [h1] 1fr [h2];
+    min-height: 50rem;
+}
+
+.graph-element {
+    grid-column: v1 / span 1;
+    grid-row: h1 / span 1;
+    align-self: start;
+    background-color: #424242;
+    min-height: 50rem;
+}
+
+.graph-element:not(:target) {
+    height: 50rem;
+    visibility: hidden;
+}
+
+.graph-element:target {
+    height: fit-content;
+    visibility: visible;
+}
+
+
+/* Any custom styles for named graph elements */
+
+#graphsSplash {
+    font-size: 5em;
+    font-weight: 500;
+    color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cfGraph,
+#arcDiagram {
+    position: relative;
+}
+
+
+/* common SVG elements */
+
+#svg-defs-wrapper {
+    width: 0;
+    height: 0;
+}
+
+.graph-element svg {
+    width: 100%;
+}
+
+path {
+    stroke: gray;
+}
+
+line {
+    stroke: gray;
+}
+
+text {
+    fill: #dfdcca;
+}
+
+.grid .tick line {
+    stroke: #ebe186;
+    stroke-opacity: 0.3;
+}
+
+.area {
+    fill: #ebebda25;
+    stroke-width: 0;
+    ;
+}
+
+.legend {
+    stroke-width: 2px;
+}
+
+.title-text {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+.legend-text {
+    font-size: 0.8em;
+    font-weight: 300;
+    text-transform: uppercase;
+    fill: #f7dfc4;
+}
+
+
+/* SVG horizontal bars for the cashflow graph */
+
+.hbar {
+    fill: #80cbc4;
+    stroke: #80cbc4;
+    stroke-width: 4px;
+    cursor: pointer;
+}
+
+.hbar+text {
+    cursor: pointer;
+}
+
+.hbar:hover {
+    stroke: #ebe186;
+}
+
+.hbar+text:hover {
+    fill: #ebe18e;
+    font-weight: 500;
+}
+
+.hbarLeftGroup text,
+.hbarRightGroup text {
+    fill: #2F4A6D;
+    font-size: 0.8em;
+}
+
+.hbarLeftGroup rect,
+.hbarRightGroup rect {
+    fill: #ebe186;
+}
+
+
+/* vertical lines for the cashflow graph */
+
+.vline {
+    stroke: #b1aad8;
+    stroke-width: 1px;
+}
+
+
+/*  slider controls window */
+
+.graph-sliderwindow {
+    position: absolute;
+    top: 2em;
+    right: 1em;
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: #c7f7ff;
+    font-size: 0.8em;
+}
+
+.graph-sliderwindow input {
+    width: 30%;
+    padding: 0;
+}
+
+.graph-sliderwindow section {
+    width: 100%;
+}
+
+.graph-sliderwindow label,
+.graph-sliderwindow section {
+    height: 2em;
+    line-height: 2em;
+    ;
+}
+
+
+/* view controls window */
+
+.graph-viewcontrols {
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 25%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; */
+    color: #c7f7ff;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+
+/*  arc diagram styles */
+
+.smalltext {
+    font-size: 0.8em;
+}
+
+.spacedtext {
+    letter-spacing: 0.1em;
+}
+
+.radial-text {
+    font-size: 0.9em;
+}
+
+.date-text {
+    font-size: 0.8em;
+    font-weight: 400;
+    fill: #86a1eb;
+}
+
+path.text-arc {
+    stroke: transparent;
+    stroke-width: 0;
+    fill: none;
+}
+
+.outer-arc path {
+    stroke-width: 1px;
+    stroke-dasharray: 2;
+    fill: none;
+}
+
+.proj-desc:hover {
+    font-weight: 500;
+    fill: #86a1eb;
+}
+
+.radial-lines path {
+    fill: none;
+}
+
+.acq-line {
+    stroke: #b1aad8;
+    stroke-width: 9px;
+}
+
+.hidden {
+    display: none;
+}
+
+.addl-line {
+    stroke: palegreen;
+    stroke-width: 9px;
+}
+
+.pointer-path {
+    stroke: yellow;
+    stroke-width: 1px;
+}
+
+.proforma-desc-text {
+    fill: yellow;
+}
+
+.acq-cash-text {
+    fill: #b1aad8;
+}
+
+.addl-cash-text {
+    fill: palegreen;
+}
+
+path.date-line {
+    stroke: #86a1eb;
+    stroke-width: 1px;
+    stroke-dasharray: 2;
+    fill: none;
+}
+
+.acq-text {
+    fill: #b1aad8;
+}
+
+.addl-text {
+    fill: palegreen;
+}
+
+.rank-text {
+    fill: yellow;
+    cursor: pointer;
+}
+
+.rank-text:hover {
+    font-weight: 600;
+}
+
+.rank-text:hover {
+    font-weight: 600;
+}
+
+.highlight-temp {
+    animation-name: highlight-bg;
+    animation-duration: 1s;
+}
+
+@keyframes highlight-bg {
+    0% {
+        background-color: currentColor;
+    }
+    100% {
+        background-color: #7ca7e911;
+    }
+}
+
+
+/* the sliding cash flow window */
+
+.cfWindow {
+    fill: #ddddff11;
+    stroke-width: 0;
+}
+
+
+/*SVG elements for the barchart */
+
+.vbar {
+    fill: #80cbc4;
+    stroke: #80cbc4;
+    stroke-width: 2px;
+}
+
+.vbar:hover {
+    stroke: #ebe186;
+}
+
+.vbar.updating {
+    fill: #ebe186;
+    stroke: #ebe186;
+}
+
+.vbar.exiting {
+    fill: #fcbc68;
+    stroke: #fcbc68;
+}
+
+.bar-hover-text {
+    fill: #ebe186;
+}
+
+
+/* SVG defs elements */
+
+.smalldot-marker {
+    stroke: #b1aad8;
+    stroke-width: 1px;
+    fill: #8b80cb;
+}
+
+.opendot-marker {
+    stroke: #ebe186;
+    stroke-width: 1px;
+    fill: none;
+}
+
+.filldot-marker {
+    stroke: #86a1eb;
+    stroke-width: 1px;
+    fill: #86a1eb;
+}
+
+.left-openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: transparent;
+}
+
+.left-openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: transparent;
+}
+
+.openbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.filledbox-marker {
+    stroke: #ebe186;
+    stroke-width: 2px;
+    fill: #ebe186;
+}
+
+
+/* range slider (webkit styling only) */
+
+input[type=range].slider-input {
+    padding: 0;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    margin-top: -2px
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 12px;
+    width: 16px;
+    border-radius: 20%;
+    background: goldenrod;
+    margin-top: -4px;
+    cursor: grabbing;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}

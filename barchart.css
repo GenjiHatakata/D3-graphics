@@ -1,0 +1,85 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#svg-defs-wrapper {
+    width: 0;
+    height: 0;
+}
+
+div#layout {
+    text-align: center;
+    width: 1000px;
+    height: 800px;
+}
+
+div#emGraph {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #2F4A6D;
+    font-size: 12px;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+path {
+    stroke: gray;
+}
+
+line {
+    stroke: gray;
+}
+
+text {
+    fill: #dfdcca;
+}
+
+.vbar {
+    fill: #80cbc4;
+    stroke: #80cbc4;
+    stroke-width: 2px;
+}
+
+.vbar:hover {
+    stroke: #ebe186;
+}
+
+.vbar.updating {
+    fill: #ebe186;
+    stroke: #ebe186;
+}
+
+.vbar.exiting {
+    fill: #fcbc68;
+    stroke: #fcbc68;
+}
+
+.grid .tick line {
+    stroke: #ebe186;
+    stroke-opacity: 0.3;
+}
+
+.area {
+    fill: #ebebda25;
+    stroke-width: 0;
+    ;
+}
+
+.title-text {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.bar-hover-text {
+    fill: #ebe186;
+}
+
+.opendot-marker {
+    stroke: #ebe186;
+    stroke-width: 1px;
+    fill: none;
+}

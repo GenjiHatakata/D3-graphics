@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cashflow schedule chart with D3.js</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="./cfschedule.css" />
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- SVG definitions -->
+    <svg id="svg-defs-wrapper" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs id="svgdefs">
+
+            <marker id="opendot" viewBox="-10 -10 20 20" refX="0" refY="0" markerWidth="10" markerHeight="10">
+                <circle cx="0" cy="0" r="5" class="opendot-marker"></circle>
+            </marker>
+            <marker id="left-openbox" refX="0" refY="2" markerWidth="4" markerHeight="4">
+                <path d="M4,0 h-4 v4 h4" class="left-openbox-marker"></path>
+            </marker>
+            <marker id="right-openbox" refX="4" refY="2" markerWidth="4" markerHeight="4">
+                <path d="M0,0 h4 v4 h-4" stroke-linejoin="miter" class="left-openbox-marker"></path>
+            </marker>
+            <marker id="openbox" refX="6" refY="3" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse">
+                <rect x="0" width="6" height="6" class="openbox-marker"></rect>
+            </marker>
+            <marker id="filledbox" refX="3" refY="3" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse">
+                <rect x="0" width="6" height="6" class="filledbox-marker"></rect>
+            </marker>
+
+            <g id="smalldot" refX="5" refY="5" width="10" height="10" viewBox="-5 -5 10 10">
+                <circle cx="0" cy="0" r="4" class="smalldot-marker"></circle>
+            </g>
+
+        </defs>
+    </svg>
+
+    <div id='layout'>
+        <!-- <h2>Bar chart example</h2> -->
+        <div id='cfGraph'>
+            <div id="dtWindow" class="cfgraph-sliderwindow">
+                <label for="monthsSlider">cf window:</label>
+                <input type="range" id="monthsSlider" name="monthsSlider" class="cfgraph-monthsslider" min="0" max="12" step="1" value="0">
+                <section id="sliderDateRange"></section>
+                <section id="sliderTotalCf"></section>
+            </div>
+        </div>
+    </div>
+
+    <!-- script src="./barchart.js"></script -->
+    <script src="./Utils.js"></script>
+    <script src="./rectStacking.js"></script>
+    <script src="./SliderWindow.js"></script>
+    <script src="./plugin-projCfSchedule.js"></script>
+    <script src="./test-schedule.js"></script>
+
+</body>
+
+</html>
