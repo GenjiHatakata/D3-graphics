@@ -416,3 +416,24 @@ input[type=range]:focus {
 input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
 }
+
+
+/* nav-related */
+
+.row.card-container .column.card-info {
+    flex-shrink: 1;
+    padding: 0;
+    margin: 0 1rem 0 1rem;
+    text-align: center;
+}
+
+.column.card-info {
+    max-height: 0;
+    overflow: hidden;
+    font-family: monospace;
+}
+
+.card:hover+.card-info {
+    transition: all 2s ease-in-out;
+    max-height: 20rem;
+}

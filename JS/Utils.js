@@ -27,6 +27,37 @@ function shortDateStr(date) {
     return new Intl.DateTimeFormat('en-US', opts).format(date);
 }
 
+function randInt(a, b) {
+    let x1 = Math.min(a, b);
+    let x2 = Math.max(a, b);
+    return Math.round(x1 + (x2 - x1) * Math.random());
+}
+
+function genAddress() {
+    const sfx = (new Array(11)).fill("th");
+    sfx[1] = "st";
+    sfx[2] = "nd";
+    sfx[3] = "rd";
+
+    let strHousenum = (randInt(1, 2) * 900).toString();
+    let strStreet = randInt(20, 120).toString();
+    let lastCharInt = parseInt(strStreet.substr(-1));
+    strSuffix = sfx[lastCharInt];
+    strSuffix = strSuffix + " Avenue, " + genCity();
+    let strAddress = strHousenum + " " + strStreet + strSuffix;
+
+    return strAddress;
+
+}
+
+function genCity() {
+    const pfx = ["Indigo", "Blue", "Green", "Yellow", "Orange", "Apple", "Peach"];
+    const sfx = ["burg", "ville", "town"];
+    let ipfx = randInt(0, pfx.length - 1);
+    let isfx = randInt(0, sfx.length - 1);
+    return pfx[ipfx] + sfx[isfx];
+}
+
 class Proforma {
     constructor(name, rank, acqCash, addlCash) {
         this.name = name;
@@ -36,10 +67,10 @@ class Proforma {
         this.addlCash = addlCash;
     }
     getDesc() {
-        const resTypes = ["Townhouse", "Attached townhouse", "Single Family"];
+        const resTypes = ["Townhouse", "Loft", "Flat", "Attached Townhouse"];
         let resIdx = Math.round((resTypes.length - 1) * Math.random());
-        let numRes = Math.round(4 + 6 * Math.random());
-        return numRes.toString() + " " + resTypes[resIdx];
+        let numRes = randInt(4, 10);
+        return numRes.toString() + " " + resTypes[resIdx] + (numRes > 1 ? "s" : "");
     }
 }
 
@@ -54,23 +85,6 @@ class Proj {
         let p = new Proforma(name, rank, acqCash, addlCash);
         this.proformas.push(p);
     }
-
-}
-
-function genAddress() {
-    const sfx = (new Array(11)).fill("th");
-    sfx[1] = "st";
-    sfx[2] = "nd";
-    sfx[3] = "rd";
-
-    let strHousenum = (Math.round((Math.random() + 1) * 900)).toString();
-    let strStreet = Math.round(20 + 100 * Math.random()).toString();
-    let lastCharInt = parseInt(strStreet.substr(-1));
-    strSuffix = sfx[lastCharInt];
-    strSuffix = strSuffix + " Avenue, Seattle";
-    let strAddress = strHousenum + " " + strStreet + strSuffix;
-
-    return strAddress;
 
 }
 
@@ -107,11 +121,7 @@ function getProjectsCfArray() {
  */
 
 function getProjectsEmArray() {
-    function randInt(a, b) {
-        let x1 = Math.min(a, b);
-        let x2 = Math.max(a, b);
-        return Math.round(x1 + (x2 - x1) * Math.random());
-    }
+
 
     Date.prototype.addDays = function(d) {
         let dtVal = this.valueOf();
@@ -136,8 +146,6 @@ function getProjectsEmArray() {
         let mthsToClose = randInt(6, 12);
         let clDate = feDate.addDays(mthsToClose * 30);
 
-        // console.log("feDate: " + feDate.toDateString() + ". clDate: " + clDate.toDateString());
-
         let emTotalAmt = 1000 * randInt(25, 100);
         let numEm = randInt(0, 4);
         let emAmt = emTotalAmt / (numEm + 1);
@@ -148,8 +156,6 @@ function getProjectsEmArray() {
             emArray.push({ dt: new Date(emDtVal), amt: emAmt });
         }
         emArray.push({ dt: clDate, amt: emAmt });
-
-
 
         projArray.push({ dt1: feDate, dt2: clDate, txt: genAddress(), cf: emArray });
 
