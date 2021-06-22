@@ -16,7 +16,7 @@ Several *proforma* building types may be considered for each property. Detailed 
 
 ## The charts
 
-All charts are designed with updating data in mind. They support a workflow in which a user may modfy graph data several times during each session (e.g. add or update project dates, and cash requirements, add *proformas*, and so on).
+All charts are designed with updating data in mind. They support a workflow in which a user may modfy graph data several times during each session (e.g. add or update project dates and cash requirements, add *proformas*, and so on).
 
 The sample charts here use random data.
 ### __Bar chart__  
