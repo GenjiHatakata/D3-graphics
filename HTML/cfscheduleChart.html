@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
     <title>Cashflow schedule chart with D3.js</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/cfschedule.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../CSS/mg.css" />
+    <link rel="stylesheet" href="../CSS/cfschedule.css" />
+
     <script src="https://d3js.org/d3.v6.min.js"></script>
 
 </head>
@@ -43,21 +48,40 @@
 
     <div id='layout'>
         <div id='cfGraph'>
-            <div id="dtWindow" class="cfgraph-sliderwindow">
-                <label for="monthsSlider">cf window:</label>
-                <input type="range" id="monthsSlider" name="monthsSlider" class="cfgraph-monthsslider" min="0" max="12" step="1" value="0">
-                <section id="sliderDateRange"></section>
-                <section id="sliderTotalCf"></section>
+            <div class="container graph-sliderwindow">
+
+                <div class="row row-center">
+                    <section class="column column-40 slider-showmths">cf window:</section>
+                    <input type="range" class="column column-60 slider-input" name="monthsSlider" min="0" max="12" step="1" value="0">
+                </div>
+
+                <div class="row">
+                    <section class="column slider-showdates"></section>
+                </div>
+
+                <div class="row">
+                    <section class="column slider-showtotals"></section>
+                </div>
+
+            </div>
+
+            <div class="container graph-viewcontrols">
+
+                <label class="label label-inline row row-center" style="font-size: 0.9em">
+                    <input type="checkbox" class="column column-10" style="margin-top: 0;">
+                    <span class="column">show projects without earnest money</span>
+                </label>
+
             </div>
         </div>
     </div>
 
     <!-- script src="./barchart.js"></script -->
-    <script src="./JS/Utils.js"></script>
-    <script src="./JS/rectStacking.js"></script>
-    <script src="./JS/SliderWindow.js"></script>
-    <script src="./JS/plugin-projCfSchedule.js"></script>
-    <script src="./JS/test-schedule.js"></script>
+    <script src="../JS/Utils.js"></script>
+    <script src="../JS/rectStacking.js"></script>
+    <script src="../JS/OverlayControls.js"></script>
+    <script src="../JS/plugin-projCfSchedule.js"></script>
+    <script src="../JS/test-schedule.js"></script>
 
 </body>
 

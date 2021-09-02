@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ page.title }}</title>
+
+    <!-- RSS feed -->
+    {% feed_meta %} {% seo %} {% if jekyll.environment == "production" %}
+    <!-- Analytics tracking -->
+    <script src="{{ site.baseurl }}{% link assets/js/analytics.js %}"></script>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ site.baseurl }}{% link CSS/mg.css %}">
+    <link rel="stylesheet" href="{{ site.baseurl }}{% link CSS/iframe.css %}">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    {% comment %} {% include navigation.html %} {% endcomment %}
+
+    <!-- Content -->
+    <div class="iframe-wrapper">
+        <iframe src="{{ page.pageref }}" title="{{ page.iframe-title }}">
+        {{ content }}
+    </iframe>
+    </div>
+
+
+</body>
+
+</html>

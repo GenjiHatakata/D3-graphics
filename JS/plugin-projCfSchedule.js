@@ -2,8 +2,10 @@
  * Timeline/schedule graph with start/close date pairs, and an 
  * array of date/amount pairs between each start/close date pair
  * 
- * @param {HTMLElement} container
-
+ * @param {HTMLElement} container - HTML container for the graph
+ * @param {Object} config - configuration object
+ * @param {sreing} config.chartTitle - chart title
+ * @param {string} config.cfLegend - legend for vertical cashflow lines
  */
 
 /*
@@ -87,7 +89,9 @@ function projCfScheduleChart(container, config = { chartTitle: "Cash flow schedu
      * @param {Date} inputData[].dt1
      * @param {Date} inputData[].dt2
      * @param {string} inputData[].txt
-     * @param {Array<dt: Date, amt: number>} inputData[].cf
+     * @param {Array<Object>} inputData[].cf
+     * @param {date} inputData[].cf[].dt
+     * @param {number} inputData[].cf[].amt
      */
     function makeChart(inputData, reuseData = false) {
 
@@ -230,15 +234,15 @@ function projCfScheduleChart(container, config = { chartTitle: "Cash flow schedu
         sliderWindowObj.setRectSizer(cfWindow, timestampDt, xScale, amtsObj);
 
         /* left and right hover groups for the horizontal bars */
-        function configLeftbarGroup(txt, xbr, ybr) {
+        function configLeftHoverGroup(txt, xbr, ybr) {
             if (!txt) {
                 leftText.text("");
                 leftRect.attr("height", 0).attr("width", 0);
             } else {
                 leftText.text(txt);
-                let txtLen = leftText._groups[0][0].textLength.baseVal.value;
-                // console.log("txtLen: " + txtLen);
-                let rectW = txtLen * 1.1;
+                let txtLen = leftText.node().getBBox().width;
+
+                let rectW = txtLen * 1.4;
                 let rectH = emSize * 1.4;
                 let rectX = xbr - rectW;
                 let rectY = ybr - (rectH / 2);
@@ -247,19 +251,19 @@ function projCfScheduleChart(container, config = { chartTitle: "Cash flow schedu
                 leftRect.attr("x", rectX).attr("y", rectY)
                     .attr("height", rectH).attr("width", rectW);
                 leftText.attr("x", rectMidX).attr("y", rectMidY);
-                // hbarLeftGroup.attr("transform", "rotate(0 " + xbr + " " + ybr + ")");
+
             }
         }
 
-        function configRightbarGroup(txt, xbl, ybl) {
+        function configRightHoverGroup(txt, xbl, ybl) {
             if (!txt) {
                 rightText.text("");
                 rightRect.attr("height", 0).attr("width", 0);
             } else {
                 rightText.text(txt);
-                let txtLen = rightText._groups[0][0].textLength.baseVal.value;
-                // console.log("txtLen: " + txtLen);
-                let rectW = txtLen * 1.1;
+                let txtLen = leftText.node().getBBox().width;
+
+                let rectW = txtLen * 1.4;
                 let rectH = emSize * 1.4;
                 let rectX = xbl;
                 let rectY = ybl - (rectH / 2);
@@ -367,15 +371,20 @@ function projCfScheduleChart(container, config = { chartTitle: "Cash flow schedu
                 let xLeftPos = d.x1 - emSize / 2;
                 let xRightPos = d.x2 + emSize / 2;
                 let yPos = d.ybase;
-                configLeftbarGroup(d.dtStr1, xLeftPos, yPos);
-                configRightbarGroup(d.dtStr2, xRightPos, yPos);
+                configLeftHoverGroup(d.dtStr1, xLeftPos, yPos);
+                configRightHoverGroup(d.dtStr2, xRightPos, yPos);
 
             })
             .on('mouseleave', function() {
-                configLeftbarGroup("");
-                configRightbarGroup("");
+                configLeftHoverGroup("");
+                configRightHoverGroup("");
             });
 
+        /**
+         * Remove and re-add the hbar left and right hover groups from the last drawing.
+         * Adding the groups as the last elements ensures that they will appear on top
+         * of any other SVG elements in case of overlap.  
+         */
 
         d3.select(container).select(".hbarLeftGroup").remove();
         const hbarLeftGroup = graphArea.append("g").attr("class", "hbarLeftGroup");

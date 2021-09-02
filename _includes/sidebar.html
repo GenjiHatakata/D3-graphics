@@ -1,0 +1,19 @@
+{%- if site.github_username -%}
+<p>
+    <a href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+        <svg class="svg-icon">
+        <use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use>
+    </svg>
+        <span class="username">{{ site.github_username| escape }}</span>
+    </a>
+</p>
+{%- endif -%} 
+
+{%- if page.title and page.details-file -%}
+
+<h4>
+    {{ page.title }} details
+</h4>
+{%- include {{ page.details-file }} -%} 
+
+{%- endif -%}

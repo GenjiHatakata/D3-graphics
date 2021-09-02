@@ -18,17 +18,17 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Custom charts with D3.js
-email: your-email@example.com
+title: "D3.js custom charts"
+email: 
 description: >- # this means to ignore newlines until "baseurl:"
-  D3.js charts with dynamic data, custom schedule charts, and user interaction
-baseurl: "/docs" # the subpath of your site, e.g. /blog
-url: "https://genjihatakata.github.io/D3-graphics" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username:  
+  D3.js custom schedule charts, dynamic bar chart
+baseurl: /D3-graphics
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: 
 github_username:  GenjiHatakata
 
 # Build settings
-theme: jekyll-theme-tactile
+theme: minima
 plugins:
   - jekyll-feed
 

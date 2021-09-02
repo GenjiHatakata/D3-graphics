@@ -8,8 +8,8 @@ div#layout {
 }
 
 #arcDiagram {
-    width: 1000px;
-    height: 600px;
+    /* width: 1000px; */
+    /* height: 600px; */
     overflow: scroll;
     margin: auto;
     background-color: #424242;
@@ -90,7 +90,7 @@ text {
 }
 
 .smalltext {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 .spacedtext {
@@ -129,7 +129,7 @@ path.text-arc {
 }
 
 .acq-line {
-    stroke: #b1aad8;
+    stroke: #ded8fd;
     stroke-width: 9px;
 }
 
@@ -152,7 +152,7 @@ path.text-arc {
 }
 
 .acq-cash-text {
-    fill: #b1aad8;
+    fill: #ded8fd;
 }
 
 .addl-cash-text {
@@ -270,15 +270,28 @@ path.date-line {
 
 /* range input */
 
+
+/* from https://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html */
+
 input[type=range].slider-input {
     padding: 0;
+    background: transparent;
 }
 
 input[type=range] {
     -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    margin-top: -2px
+}
+
+input[type=range]::-moz-range-track {
+    -moz-appearance: none;
     width: 100%;
     height: 4px;
     background: #ddd;
@@ -293,6 +306,18 @@ input[type=range]::-webkit-slider-thumb {
     background: goldenrod;
     margin-top: -4px;
     cursor: grabbing;
+    border: none;
+}
+
+input[type=range]::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 12px;
+    width: 16px;
+    border-radius: 20%;
+    background: goldenrod;
+    margin-top: -4px;
+    cursor: grabbing;
+    border: none;
 }
 
 input[type=range]:focus {
@@ -300,5 +325,9 @@ input[type=range]:focus {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]:focus::-moz-range-track {
     background: #ccc;
 }

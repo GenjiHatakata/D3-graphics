@@ -1,5 +1,5 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 #svg-defs-wrapper {
@@ -9,15 +9,14 @@ body {
 
 div#layout {
     text-align: center;
-    width: 1000px;
-    height: 800px;
+    overflow: scroll;
 }
 
 div#emGraph {
     width: 100%;
     height: 100%;
     margin: auto;
-    background-color: #2F4A6D;
+    background-color: #424242;
     font-size: 12px;
 }
 

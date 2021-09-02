@@ -1,5 +1,12 @@
+node_modules
 workspace.code-workspace
 package.json
 package-lock.json
-node_modules
+out
 
+# Jekyll-related
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor

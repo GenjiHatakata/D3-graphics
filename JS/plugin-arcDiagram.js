@@ -10,9 +10,16 @@ import { stackRects } from './rectStacking.js';
  * project. Acquisition and additional cash are shown as radial bars.
  * Cash flows can be aggregated over any period using a sliding date window.
  *  
- * @param {HTMLElement} container 
+ * @param {HTMLElement} container - the HTML container element for the chart
  * @param {string} chartTitle
+ * @returns {Function} makeChart - draws a chart
+ * 
+ * @example
+ * const arcChart = arcScheduleChart(htmlElem, chartTitle);
+ * arcChart.makeChart(projData) // can be called repeatedly with new data
+ * 
  */
+
 function arcScheduleChart(container, chartTitle) {
 
     let savedData = {};
@@ -81,10 +88,23 @@ function arcScheduleChart(container, chartTitle) {
 
         wrapperInit = true;
     }
+    /**
+     * @typedef {Object} Proforma - data structure for a proforma
+     * @property {string} name - name of the proforma
+     * @property {number} rank - interger rank of the proforma
+     * @property {number} acqCash - acquisition cash for the proforma
+     * @property {number} addlCash - additional cash for the proforma
+     */
+    /**
+     * @typedef {Object} Proj - data structure for a project
+     * @property {date} dt - project start date
+     * @property {string} desc - project description
+     * @property {Proforma[]} proformas - proformas associated with the project
+     */
 
     /**
      * 
-     * @param {Array<Proj>} projData 
+     * @param {Proj[]} projData 
      * @param {boolean} reuseData
      */
     function makeChart(projData, reuseData = false) {
@@ -315,8 +335,8 @@ function arcScheduleChart(container, chartTitle) {
             } else {
                 lineCoords = [{ x: proj.cx, y: proj.cy }, { x: proj.cx, y: 0 }];
                 dateTxt = shortDateStr(proj.dt);
-                txtX = proj.cx - emSize / 2;
-                txtY = proj.cy - cellRadius - emSize;
+                txtX = proj.cx + emSize;
+                txtY = proj.cy - cellRadius - 2 * emSize;
                 txtAngle = -90;
                 markerUrl = filldotUrl;
             }
@@ -601,7 +621,7 @@ function arcScheduleChart(container, chartTitle) {
     }
 
     /** 
-     * Insert title and legend grpups 
+     * Insert title and legend groups 
      */
     function writeTitleLegend(svgParent, chartTitle) {
 

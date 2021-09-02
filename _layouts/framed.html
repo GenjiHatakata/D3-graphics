@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en " }}">
+
+{%- include head.html -%}
+
+<body>
+
+    {%- include header.html -%}
+
+    <div class="gh-wrapper">
+
+        <div class="gh-sidebar">
+            {%- include sidebar.html -%}
+        </div>
+
+        <div class="gh-content">
+                <!-- Content -->
+                <!-- div class="iframe-wrapper" -->
+                    <iframe src="{{ page.pageref }}" title="{{ page.iframe-title }}">
+                        {{ content }}
+                    </iframe>
+                <!-- /div -->
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

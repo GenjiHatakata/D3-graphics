@@ -1,0 +1,84 @@
+--- 
+# 
+--- 
+
+@import "{{ site.theme }}";
+
+div.gh-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.gh-sidebar {
+    margin: 0;
+    padding: 1rem;
+    background-color: #f1f1f1;
+    flex: 0 0 18rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.gh-content {
+    background-color: #d1d1d1;
+    flex: 0 0 calc(100vw - 18rem);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.gh-sidebar a {
+    display: block;
+    padding: 1.6rem;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+    div.gh-wrapper {
+        display: block;
+    }
+    .gh-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .gh-sidebar a {
+        float: left;
+    }
+    div.gh-content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .gh-sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+.gh-sidebar h4,
+.gh-sidebar h5,
+.gh-sidebar h6 {
+    text-transform: uppercase;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.gh-sidebar h4 {
+    border-bottom: 4px solid lightgray;
+}
+
+.gh-sidebar h5 {
+    border-bottom: 2px solid lightgray;
+}
+
+.gh-sidebar h6 {
+    border-bottom: 1px solid lightgray;
+}
+.gh-content iframe {
+    min-height: 80vh;
+    border: none;
+}

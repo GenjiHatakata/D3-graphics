@@ -1,5 +1,5 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 div#layout {
@@ -8,11 +8,11 @@ div#layout {
 }
 
 #cfGraph {
-    width: 1000px;
-    height: 600px;
+    /* width: 1000px; */
+    /* height: 600px; */
     overflow: scroll;
     margin: auto;
-    background-color: #2F4A6D;
+    background-color: #424242;
     font-size: 12px;
     position: relative;
 }
@@ -38,10 +38,18 @@ text {
     fill: #dfdcca;
 }
 
+
+/* SVG horizontal bars for the cashflow graph */
+
 .hbar {
     fill: #80cbc4;
     stroke: #80cbc4;
     stroke-width: 4px;
+    cursor: pointer;
+}
+
+.hbar+text {
+    cursor: pointer;
 }
 
 .hbar:hover {
@@ -64,39 +72,16 @@ text {
     fill: #ebe186;
 }
 
-.legend {
-    stroke-width: 2px;
-}
 
-.hbar:hover {
-    stroke: #ebe186;
-}
-
-.hbar.updating {
-    fill: #ebe186;
-    stroke: #ebe186;
-}
-
-.hbar.exiting {
-    fill: #fcbc68;
-    stroke: #fcbc68;
-}
+/* vertical lines for the cashflow graph */
 
 .vline {
     stroke: #b1aad8;
     stroke-width: 1px;
 }
 
-.grid .tick line {
-    stroke: #ebe186;
-    stroke-opacity: 0.3;
-}
 
-.area {
-    fill: #ebebda25;
-    stroke-width: 0;
-    ;
-}
+/* title, legend */
 
 .title-text {
     font-size: 1.8em;
@@ -109,6 +94,9 @@ text {
     text-transform: uppercase;
     fill: #f7dfc4;
 }
+
+
+/* SVG defs */
 
 .smalldot-marker {
     stroke: #b1aad8;
@@ -146,32 +134,40 @@ text {
     fill: #ebe186;
 }
 
-.cfgraph-sliderwindow {
+
+/* date window slider */
+
+.graph-sliderwindow {
     position: absolute;
     top: 1em;
     right: 1em;
-    width: 20%;
-    display: flex;
+    width: 25%;
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    color: greenyellow;
+    justify-content: space-around; */
+    color: #c7f7ff;
     font-size: 0.9em;
+    text-align: left;
 }
 
-.cfgraph-sliderwindow input {
-    width: 40%;
+.graph-sliderwindow input {
+    width: 30%;
+    padding: 0;
 }
 
-.cfgraph-sliderwindow section {
+.graph-sliderwindow section {
     width: 100%;
 }
 
-.cfgraph-sliderwindow label,
-.cfgraph-sliderwindow section {
+.graph-sliderwindow label,
+.graph-sliderwindow section {
     height: 2em;
     line-height: 2em;
     ;
 }
+
+
+/* adjustable cash flow window */
 
 .cfWindow {
     fill: #ddddff11;
@@ -179,17 +175,46 @@ text {
 }
 
 
+/* view controls */
+
+.graph-viewcontrols {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 25%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; */
+    color: #c7f7ff;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+
 /* range input */
+
+
+/* from https://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html */
 
 input[type=range].slider-input {
     padding: 0;
+    background: transparent;
 }
 
 input[type=range] {
     -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    margin-top: -2px
+}
+
+input[type=range]::-moz-range-track {
+    -moz-appearance: none;
     width: 100%;
     height: 4px;
     background: #ddd;
@@ -204,6 +229,18 @@ input[type=range]::-webkit-slider-thumb {
     background: goldenrod;
     margin-top: -4px;
     cursor: grabbing;
+    border: none;
+}
+
+input[type=range]::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 12px;
+    width: 16px;
+    border-radius: 20%;
+    background: goldenrod;
+    margin-top: -4px;
+    cursor: grabbing;
+    border: none;
 }
 
 input[type=range]:focus {
@@ -211,5 +248,9 @@ input[type=range]:focus {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]:focus::-moz-range-track {
     background: #ccc;
 }

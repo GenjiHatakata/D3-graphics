@@ -59,6 +59,13 @@ function genCity() {
 }
 
 class Proforma {
+    /**
+     * Create a proforma 
+     * @param {string} name - name of the proforma
+     * @param {number} rank - interger rank of the proforma
+     * @param {number} acqCash - acquisition cash for the proforma
+     * @param {number} addlCash - additional cash for the proforma
+     */
     constructor(name, rank, acqCash, addlCash) {
         this.name = name;
         this.rank = rank;
@@ -74,7 +81,14 @@ class Proforma {
     }
 }
 
+
 class Proj {
+    /**
+     * Create a project
+     * @param {date} dt - project start date
+     * @param {string} desc - project description
+     * @param {Proforma[]} proformas - proformas associated with the project
+     */
     constructor(dt, desc) {
         this.dt = dt;
         this.desc = desc;
