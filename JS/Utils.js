@@ -109,8 +109,11 @@ function getProjectsCfArray() {
     let maxProformas = 6;
     let cashMin = 20000;
     let cashMax = 100000;
-    let dtValMin = (new Date(2020, 10, 1)).valueOf();
-    let dtValMax = (new Date(2022, 11, 1)).valueOf();
+    let curDt = new Date();
+    let curYear = curDt.getFullYear();
+    let curMonth = curDt.getMonth();
+    let dtValMin = (new Date(curYear, curMonth, 1)).valueOf();
+    let dtValMax = (new Date(curYear + 1, 12, 1)).valueOf();
 
 
     for (let iproj = 0; iproj < nproj; iproj++) {

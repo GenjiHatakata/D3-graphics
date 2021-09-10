@@ -3,8 +3,8 @@
  * array of date/amount pairs between each start/close date pair
  * 
  * @param {HTMLElement} container - HTML container for the graph
- * @param {Object} config - configuration object
- * @param {sreing} config.chartTitle - chart title
+ * @param {Object} config - configuration options object
+ * @param {string} config.chartTitle - chart title
  * @param {string} config.cfLegend - legend for vertical cashflow lines
  */
 
@@ -179,9 +179,8 @@ function projCfScheduleChart(container, config = { chartTitle: "Cash flow schedu
         plotData.forEach((p, i) => { p.idx = i; });
 
         // create a rectangles array for stacking
-        // rectangle height is the sum of all cf.h fields
+        // rectangle height is the max of all cf.h fields
         const rects = plotData.map((p) => {
-            // let h = p.cf.reduce((a, c) => { return a + c.h; }, 0);
             let h = Math.max(...p.cf.map(c => c.h));
             return new Rect(p.idx, p.x1, 0, (p.x2 - p.x1), h);
         });
